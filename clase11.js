@@ -10,6 +10,12 @@ var sacha = {
     drone: true,
 }
 
+var juan = {
+    nombre: 'Juan',
+    apellido: 'Gomez',
+    edad: 13
+}
+
 function imprimirProfesiones(persona) {
     console.log(`${persona.nombre} es`)
     // si la persona que nos mandan es ingeniero
@@ -43,11 +49,18 @@ function imprimirProfesiones(persona) {
 
 }
 
-imprimirProfesiones(sacha)
+// var mayoriaDeEdad = 18
+const MAYORIA_DE_EDAD = 18
+
+function esMayorDeEdad(persona) {
+    return persona.edad >= MAYORIA_DE_EDAD
+}
+
 
 function imprimirSiEsMayorDeEdad(persona) {
     // Sacha es mayor de edad
-    if (persona.edad >= 18) {
+    // > num es comparacion estricta
+    if (esMayorDeEdad(persona)) {
         console.log(`${persona.nombre} es mayor de edad`)
     } else {
         console.log(`${persona.nombre} es menor de edad`)
