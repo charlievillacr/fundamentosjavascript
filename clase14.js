@@ -12,7 +12,9 @@ const DIAS_DEL_ANO = 365
 
 const aumentarDePeso = persona => persona.peso += INCREMENTO_PESO
 const adelgazar = persona => persona.peso -= INCREMENTO_PESO
+// const comeMucho = () => Math.random < 0.3 
 const comeMucho = () => Math.random() < 0.3 
+// const realizaDeporte = () => Math.random < 0.4 
 const realizaDeporte = () => Math.random() < 0.4 
 
 const META = sacha.peso - 3
