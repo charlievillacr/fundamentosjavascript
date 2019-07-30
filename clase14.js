@@ -18,6 +18,11 @@ const META = sacha.peso - 3
 //Estructuras repetitivas: while
 
 while (sacha.peso > META) {
+    /** 
+     Si el peso de Sacha
+     está por encima de la meta
+     se ejecuta lo siguiente
+     **/
     if () {
         //aumentaDePeso
     }
