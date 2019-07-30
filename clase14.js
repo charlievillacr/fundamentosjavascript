@@ -15,7 +15,15 @@ const adelgazar = persona => persona.peso -= INCREMENTO_PESO
 
 const META = sacha.peso - 3
 
-while () {
+//Estructuras repetitivas: while
+
+while (sacha.peso > META) {
+    if () {
+        //aumentaDePeso
+    }
+    if () {
+        //adelgazar
+    }
     
 }
 
