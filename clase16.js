@@ -55,7 +55,6 @@ switch (signo) {
         console.log('Será conveniente que Piscis se mantenga apartado si hoy se produce algún conflicto en el trabajo, será un factor que le distraerá de sus futuros proyectos que permitirán a Piscis progresar en su carrera. Aunque no tendrán problemas de dinero, Piscis debería poner en orden sus finanzas antes de hacer un gasto excesivo en sus vacaciones.')
         break
 }
-
 /**
  Switch statement
  con los signos del horóscopo
