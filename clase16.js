@@ -26,8 +26,14 @@ switch (signo) {
     //     break
     case 'tauro':
         console.log('Los últimos días de julio serán primordiales para Tauro si quiere progresar en el trabajo, por ello, será esencial mantener sus objetivos muy presentes, para que nada ni nadie distraiga a Tauro de sus expectativas profesionales. ')
-        break    
+        break  
+    case 'geminis':
+    case 'géminis':
+        console.log('Hoy Géminis se expresará con mucha claridad a la hora de hacer negocios, esto facilitará el cierre de propuestas de trabajo muy ambiciosos que Géminis podría poner en marcha a corto plazo')
+        break 
+    //variaciones del nombre
     case 'cancer':
+    case 'cáncer':
         console.log('Surgirán grandes oportunidades para que Cáncer emprenda importantes proyectos profesionales, aunque se avecinan las vacaciones, si Cáncer deja todo bien atado, en los próximos meses verá un progreso significativo en el trabajo.')
         break   
     case 'leo':
@@ -54,6 +60,9 @@ switch (signo) {
     case 'piscis':
         console.log('Será conveniente que Piscis se mantenga apartado si hoy se produce algún conflicto en el trabajo, será un factor que le distraerá de sus futuros proyectos que permitirán a Piscis progresar en su carrera. Aunque no tendrán problemas de dinero, Piscis debería poner en orden sus finanzas antes de hacer un gasto excesivo en sus vacaciones.')
         break
+    // si no se cumple ninguna de las anteriores...
+    default:
+        console.log('No es un signo zodiacal válido.')
 }
 /**
  Switch statement
