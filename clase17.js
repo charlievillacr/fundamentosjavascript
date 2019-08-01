@@ -29,3 +29,17 @@ var paula = {
     altura: 1.76
 }
 
+var personas = [sacha, allan, martin, dario, vicky, paula]
+
+for (var i = 0; i < personas.length; i++) {
+    var persona = personas[i]
+    console.log(`${persona.nombre} mide ${persona.altura}mts`)
+}
+
+// Formas de "acceder" la info de las variables / personas
+
+/**
+personas[0] // 0 "Cero" va ser el primero de los elementos = Sacha
+personas[0].altura // 1.72
+personas[0]["altura"] // 1.72
+**/
