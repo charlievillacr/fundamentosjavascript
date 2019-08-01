@@ -29,13 +29,37 @@ var paula = {
     altura: 1.76
 }
 
+// Define quien es alto y quien no 
+
+/**
+ const esAlta = (persona) => {
+    return persona.altura > 1.8
+}
+En los arrow function con solo un parametro no hace falta las ()
+en (personas)
+**/
+
+// const esAlta = persona => persona.altura > 1.8
+
+// arrow function papiiiee!!
+const esAlta = ({ altura }) => altura > 1.8
+// si solo nos interesa la altura
+
 var personas = [sacha, allan, martin, dario, vicky, paula]
+
+// Otra opción es:
+/**
+var personasAltas = personas.filter(function (persona) {
+    return persona.altura > 1.8
+})
+**/
 
 // para filtrar se necesitan dos cosas
 // una condición y un array
 
+// var personasAltas = personas.filter(condición)
 
-
+var personasAltas = personas.filter(esAlta)
 
 /**
 for (var i = 0; i < personas.length; i++) {
@@ -45,8 +69,11 @@ for (var i = 0; i < personas.length; i++) {
 
 // Formas de "acceder" la info de las variables / personas
 
-
 personas[0] // 0 "Cero" va ser el primero de los elementos = Sacha
 personas[0].altura // 1.72
 personas[0]["altura"] // 1.72
 **/
+
+console.log(personasAltas) // alan y martin
+
+
