@@ -1,4 +1,3 @@
-var signo = prompt('¿Cuál es tu signo?')
 
 // console.log(signo)
 // if (signo === 'acuario') {
@@ -15,6 +14,9 @@ var signo = prompt('¿Cuál es tu signo?')
  cuando tenemos muchos ifs, 
  es hora de utilizar un switch statement
  **/ 
+
+var signo = prompt('¿Cuál es tu signo?')
+
 switch (signo) {
     // switch (), le pasa (variable) 
     case 'aries':
