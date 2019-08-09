@@ -44,6 +44,19 @@ var sacha = {
   // })
   
   // persona.altura = persona.altura * 100
+
+  /** 
+   const pasarAlturaCms = persona => {
+       return {
+           ...persona,
+           altura: persona.altura * 100
+       }
+   }
+  
+  **/
+
+  // Si el arrow function empieza con llaves/parentesis n
+    // debe iniciar con parentesis ()   
   const pasarAlturaACms = persona => ({
     ...persona,
     altura: persona.altura * 100
