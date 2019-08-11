@@ -26,4 +26,4 @@ var daniG = new Persona('Daniela', 'María G')
 
 sacha.saludar() //hola me llamo
 chuck.saludar() // Hola me llamo Chuck, Norris
-daniG.saludar()
+daniG.saludar() // Hola me llamo Dedo, Verde
