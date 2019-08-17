@@ -16,6 +16,7 @@ Persona.prototype.saludar = function () {
 var sacha = new Persona('Sacha', 'Lifszyc')
 var chuck = new Persona('Chuck', 'Norris')
 var arturo = new Persona('Arturo', 'Martinez')
+var daniG = new Persona('Daniela', 'María G') 
 
 // sacha returns
 // Persona {nombre: "Sacha", apellido: "Lifszyc"}
@@ -24,3 +25,5 @@ var arturo = new Persona('Arturo', 'Martinez')
 // __proto__: Object
 
 sacha.saludar() //hola me llamo
+chuck.saludar() // Hola me llamo Chuck, Norris
+daniG.saludar() // Hola me llamo Dedo, Verde
