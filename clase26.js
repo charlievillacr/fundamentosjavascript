@@ -6,7 +6,6 @@ class Persona {
     }
     saludar(fn) {
         var { nombre, apellido } = this
-
         console.log(`Hola, me llamo ${nombre} ${apellido}`)
         if (fn) {
             fn(nombre, apellido, null)
@@ -23,8 +22,6 @@ class Desarrollador extends Persona {
     }
     saludar(fn) {
         var { nombre, apellido } = this
-        // var nombre = this.nombre
-        // var apellido = this.apellido
         console.log(`Hola me llamo ${nombre} ${apellido} y soy desarrollador/ra`)
         if (fn) {
             fn(nombre, apellido, true)
@@ -38,11 +35,10 @@ function responderSaludo(nombre, apellido, esDev) {
         console.log(`Ah mirá, no sabía que eras desarrollador, awesome!`)
     }
 }
-
   
- var sacha = new Persona('Sacha', 'Lifszyc', 1.72)
- var erika = new Persona('Erika', 'Luna', 1.65)
- var arturo = new Desarrollador('Arturo', 'Martinez', 1.89)
+var sacha = new Persona('Sacha', 'Lifszyc', 1.72)
+var erika = new Persona('Erika', 'Luna', 1.65)
+var arturo = new Desarrollador('Arturo', 'Martinez', 1.89)
 
 sacha.saludar()
 erika.saludar(responderSaludo)
