@@ -14,7 +14,7 @@ function obtenerPersonaje(id) {
 }
 
 function onError(id) {
-    console.log(`Suceddió un error al obtener el personaje ${id}`)
+    console.log(`Sucedió un error al obtener el personaje ${id}`)
 }
 
 
