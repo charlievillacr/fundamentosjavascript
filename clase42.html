@@ -114,8 +114,12 @@
       
 
       inicializar() {
+        // 1ero que podemos hacer .bind(this) atado al juego
+        // this.elegirColor = this.elegirColor.bind(this)
+        // permite quitarlo en cada color
+        this.elegirColor = this.elegirColor.bind(this)
         btnEmpezar.classList.add('hide')
-        this.nivel = 7
+        this.nivel = 1
         /* 
         Si queremos que se iluminen
         varios colores momentaneamente cambiar: 
@@ -130,14 +134,13 @@
         }
       }
 
-
-
     generarSecuencia() {
         this.secuencia = new Array(10).fill(0).map(n => Math.floor(Math.random() * 4))
         }
 
     siguienteNivel() {
       this.iluminarSecuencia()
+      this.agregarEventosClick()
     }
 
     transformarNumeroAColor(numero) {
@@ -159,7 +162,8 @@
       for (let i = 0; i < this.nivel; i++) {
         // ciclos for, usar let
           // al usar var o let
-          let color = this.transformarNumeroAColor(this.secuencia[i])
+          const color = this.transformarNumeroAColor(this.secuencia[i])
+          // let luego const
           // timeHandler
           setTimeout(() => this.iluminarColor(color), 1000 * i)
         }
@@ -175,10 +179,30 @@
       this.colores[color].classList.remove('light')
       // quitar clase .light
       }
+    
+    agregarEventosClick() {
+      // var self = this
+      // this.colores.celeste.addEventListener('click', this.elegirColor.bind(self))
+      this.colores.celeste.addEventListener('click', this.elegirColor)
+                                               // si no lo ponemos
+                                              //  este metodo .bind(this)
+                                              // va tener a this como el boton
+                                              // this.elegirColor = this.elegirColor.bind(this)
+                                              // permite quitarlo
+      this.colores.violeta.addEventListener('click', this.elegirColor)     
+      this.colores.naranja.addEventListener('click', this.elegirColor)    
+      this.colores.verde.addEventListener('click', this.elegirColor)     
+      // cada uno de los botones
+      }
+
+    elegirColor(ev) {
+      console.log(this)
     }
+  }
 
     function empezarJuego() {
       window.juego = new Juego()
+      // new Juego() = (this) con .bind(this)
     }
 
     </script>
