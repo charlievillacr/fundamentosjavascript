@@ -103,11 +103,25 @@
         constructor() {
           this.inicializar();
           this.generarSecuencia()
+          this.siguienteNivel()
         }
+
+      /*  
+      Clase número 41:
+      https://platzi.com/clases/1339-fundamentos-javascript/12969-iluminando-la-secuencia-de-color-8/
+      */
+  
+      
 
       inicializar() {
         btnEmpezar.classList.add('hide')
-        this.nivel = 1
+        this.nivel = 7
+        /* 
+        Si queremos que se iluminen
+        varios colores momentaneamente cambiar: 
+        por ejemplo:
+        this.nivel = 7
+        */
         this.colores = {
           celeste,
           violeta,
@@ -115,13 +129,53 @@
           verde
         }
       }
-  
+
+
 
     generarSecuencia() {
         this.secuencia = new Array(10).fill(0).map(n => Math.floor(Math.random() * 4))
         }
+
+    siguienteNivel() {
+      this.iluminarSecuencia()
     }
-      
+
+    transformarNumeroAColor(numero) {
+      switch (numero) {
+        case 0:
+          return 'celeste'
+        case 1:
+          return 'violeta'
+        case 2: 
+          return 'naranja'
+        case 3: 
+          return 'verde'
+      }
+    }
+
+    // tenemos un bug!
+
+    iluminarSecuencia() {
+      for (let i = 0; i < this.nivel; i++) {
+          // al usar var o let
+          let color = this.transformarNumeroAColor(this.secuencia[i])
+          // timeHandler
+          setTimeout(() => this.iluminarColor(color), 1000 * i)
+        }
+      }
+
+    iluminarColor(color) {
+        this.colores[color].classList.add('light')
+        // parpadeo
+        setTimeout(() => this.apagarColor(color), 350)
+      }
+
+    apagarColor(color) {
+      this.colores[color].classList.remove('light')
+      // quitar clase .light
+      }
+    }
+
     function empezarJuego() {
       window.juego = new Juego()
     }
