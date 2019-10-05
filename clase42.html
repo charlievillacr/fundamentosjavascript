@@ -110,8 +110,6 @@
       Clase número 41:
       https://platzi.com/clases/1339-fundamentos-javascript/12969-iluminando-la-secuencia-de-color-8/
       */
-  
-      
 
       inicializar() {
         // 1ero que podemos hacer .bind(this) atado al juego
@@ -139,24 +137,23 @@
         }
 
     siguienteNivel() {
+      this.subnivel = 0
       this.iluminarSecuencia()
       this.agregarEventosClick()
     }
 
-    transformarNumeroAColor(numero) {
-      switch (numero) {
-        case 0:
-          return 'celeste'
-        case 1:
-          return 'violeta'
-        case 2: 
-          return 'naranja'
-        case 3: 
-          return 'verde'
+    transformarColorANumero(color) {
+      switch (color) {
+        case 'celeste':
+          return 0
+        case 'violeta':
+          return 1
+        case 'naranja': 
+          return 2
+        case 'verde': 
+          return 3
       }
     }
-
-    // tenemos un bug!
 
     iluminarSecuencia() {
       for (let i = 0; i < this.nivel; i++) {
@@ -196,7 +193,12 @@
       }
 
     elegirColor(ev) {
-      console.log(this)
+      // console.log(ev)
+      // transformar número
+      const nombreColor = ev.target.dataset.color
+      const numeroColor = transformarColorANumero(nombreColor)
+      this.iluminarColor(nombreColor)
+      
     }
   }
 
