@@ -82,6 +82,10 @@
       .hide {
         display: none;
       }
+
+      * {
+        font-family: 'Arial';
+      }
     </style>
   </head>
   <body>
@@ -92,38 +96,29 @@
       <div id="verde" class="color verde right" data-color="verde"></div>
       <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script>
       const celeste = document.getElementById('celeste')
       const violeta = document.getElementById('violeta')
       const naranja = document.getElementById('naranja')
       const verde = document.getElementById('verde')
       const btnEmpezar = document.getElementById('btnEmpezar')
+      const ULTIMO_NIVEL = 10
+      // swal('Hola')
       
       class Juego {
         constructor() {
-          this.inicializar();
+          this.inicializar = this.inicializar.bind(this)
+          this.inicializar()
           this.generarSecuencia()
-          this.siguienteNivel()
+          setTimeout(this.siguienteNivel, 500)
         }
 
-      /*  
-      Clase número 41:
-      https://platzi.com/clases/1339-fundamentos-javascript/12969-iluminando-la-secuencia-de-color-8/
-      */
-
       inicializar() {
-        // 1ero que podemos hacer .bind(this) atado al juego
-        // this.elegirColor = this.elegirColor.bind(this)
-        // permite quitarlo en cada color
+        this.siguienteNivel = this.siguienteNivel.bind(this)
         this.elegirColor = this.elegirColor.bind(this)
-        btnEmpezar.classList.add('hide')
+        this.toggleBtnEmpezar()
         this.nivel = 1
-        /* 
-        Si queremos que se iluminen
-        varios colores momentaneamente cambiar: 
-        por ejemplo:
-        this.nivel = 7
-        */
         this.colores = {
           celeste,
           violeta,
@@ -132,14 +127,35 @@
         }
       }
 
+      toggleBtnEmpezar() {
+        if (btnEmpezar.classList.contains('hide')) {
+          btnEmpezar.classList.remove('hide')
+        } else {
+          btnEmpezar.classList.add('hide')
+        }
+      }
+
     generarSecuencia() {
-        this.secuencia = new Array(10).fill(0).map(n => Math.floor(Math.random() * 4))
+        this.secuencia = new Array(ULTIMO_NIVEL).fill(0).map(n => Math.floor(Math.random() * 4))
         }
 
     siguienteNivel() {
       this.subnivel = 0
       this.iluminarSecuencia()
       this.agregarEventosClick()
+    }
+
+    transformarNumeroAColor(numero) {
+      switch (numero) {
+        case 0:
+          return 'celeste'
+        case 1:
+          return 'violeta'
+        case 2:
+          return 'naranja'
+        case 3:
+          return 'verde'
+      }
     }
 
     transformarColorANumero(color) {
@@ -157,11 +173,7 @@
 
     iluminarSecuencia() {
       for (let i = 0; i < this.nivel; i++) {
-        // ciclos for, usar let
-          // al usar var o let
           const color = this.transformarNumeroAColor(this.secuencia[i])
-          // let luego const
-          // timeHandler
           setTimeout(() => this.iluminarColor(color), 1000 * i)
         }
       }
@@ -178,35 +190,64 @@
       }
     
     agregarEventosClick() {
-      // var self = this
-      // this.colores.celeste.addEventListener('click', this.elegirColor.bind(self))
+
       this.colores.celeste.addEventListener('click', this.elegirColor)
-                                               // si no lo ponemos
-                                              //  este metodo .bind(this)
-                                              // va tener a this como el boton
-                                              // this.elegirColor = this.elegirColor.bind(this)
-                                              // permite quitarlo
       this.colores.violeta.addEventListener('click', this.elegirColor)     
       this.colores.naranja.addEventListener('click', this.elegirColor)    
       this.colores.verde.addEventListener('click', this.elegirColor)     
-      // cada uno de los botones
       }
 
-    elegirColor(ev) {
-      // console.log(ev)
-      // transformar número
-      const nombreColor = ev.target.dataset.color
-      const numeroColor = transformarColorANumero(nombreColor)
-      this.iluminarColor(nombreColor)
-      
+    eliminarEventosClick() {
+        this.colores.celeste.removeEventListener('click', this.elegirColor)
+        this.colores.violeta.removeEventListener('click', this.elegirColor)
+        this.colores.naranja.removeEventListener('click', this.elegirColor)
+        this.colores.verde.removeEventListener('click', this.elegirColor)
     }
-  }
 
+    elegirColor(ev) {
+      const nombreColor = ev.target.dataset.color
+      const numeroColor = this.transformarColorANumero(nombreColor)
+      this.iluminarColor(nombreColor)
+      if (numeroColor === this.secuencia[this.subnivel]) {
+        this.subnivel++
+        if (this.subnivel === this.nivel) {
+          this.nivel++
+          this.eliminarEventosClick()
+          if (this.nivel === (ULTIMO_NIVEL + 1)) {
+            // Ganó
+            this.ganoElJuego()
+          } else {
+            setTimeout(this.siguienteNivel, 1500)
+            // setTimeout(this.siguienteNivel.bind(this), 2000)
+            // setTimeout(this.siguienteNivel, 2000)
+            // llamá esta, después de 2000
+            }
+          }
+        }  else {
+          // Perdió
+          this.perdioElJuego()
+        }
+      }
+
+      ganoElJuego() {
+        swal('Charlie V', 'Felicitaciones, Ganaste el juego!', 'success')
+        .then(this.inicializar)
+        // .then(this.inicializar.bind(this))
+      }
+
+      perdioElJuego() {
+        swal('Charlie V', 'Lo lamento, perdiste :(', 'error')
+        .then(() => {
+          this.eliminarEventosClick()
+          this.inicializar()
+        })
+      }
+
+    }
     function empezarJuego() {
       window.juego = new Juego()
       // new Juego() = (this) con .bind(this)
     }
-
     </script>
   </body>
 </html>
